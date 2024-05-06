@@ -1,0 +1,23 @@
+
+.restaurant-details{
+    display: flex;
+}
+.restaurant-details>img {
+    width: 320px;
+    height: 300px;
+    margin: 10px;
+}
+
+.restaurant-menu{
+    display: flex;
+    align-items: center
+}
+.menu-list {
+    display: flex;
+    margin: 10px;
+    align-items: center;
+}
+.menu-image {
+    width: 100px;
+    height: 80px;
+}
