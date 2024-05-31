@@ -1,40 +1,23 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import { IMG_CDN_URL, IMG_RESTAURANT_MENU_URL } from "../config";
 import "./RestaurantMenu.css";
 import ShimmerUI from "../Shimmer/ShimmerUI";
+import useRestaurant from "../../utils/useRestaurant";
+import { useDispatch } from "react-redux";
+import { addItem } from "../../Store/cartSlice";
 
 const RestaurantMenu = () => {
-  const [restaurantMenu, setRestaurantMenu] = useState([]);
-  const [restaurantDetails, setRestaurantDetails] = useState({});
   const params = useParams();
   const { id } = params;
 
-  useEffect(() => {
-    getRestaurantInfo();
-  }, []);
+  const dispatch = useDispatch();
 
-  async function getRestaurantInfo() {
-    const data = await fetch(
-      "https://www.swiggy.com/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=26.7784904&lng=94.21539600000001&restaurantId=" +
-        id +
-        "&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER"
-    );
-    const json = await data.json();
-    setRestaurantDetails(json?.data?.cards[2]?.card?.card?.info);
-    const recommendedList =
-      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card?.itemCards;
-    const keyword = "Recommended";
-    if (recommendedList) {
-      setRestaurantMenu(recommendedList);
-    } else {
-      setRestaurantMenu(
-        json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-          ?.card?.itemCards
-      );
-    }
-  }
+  const addFoodItem = (item) => {
+    dispatch(addItem(item));
+  };
+
+  const [restaurantMenu, restaurantDetails] = useRestaurant(id);
 
   return !restaurantMenu?.length === 0 ? (
     <ShimmerUI />
@@ -73,6 +56,7 @@ const RestaurantMenu = () => {
                       ? menu?.card?.info?.price / 100
                       : menu?.card?.info?.defaultPrice / 100}
                   </h4>
+                  <button onClick={() => addFoodItem(menu)}>Add</button>
                 </li>
               ))}
             </ul>

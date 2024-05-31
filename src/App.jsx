@@ -5,13 +5,16 @@ import ErrorPage from "./component/ErrorPage/ErrorPage";
 import About from "./component/About/About";
 import Contact from "./component/Contact/Contact";
 import RestaurantMenu from "./component/RestaurantMenu/RestaurantMenu";
+import { Provider } from "react-redux";
+import store from "./Store/store";
+import Cart from "./component/Cart/Cart";
 
 function App() {
   return (
-    <div>
+    <Provider store={store}>
       <Navbar />
       <Outlet />
-    </div>
+    </Provider>
   );
 }
 
@@ -36,6 +39,10 @@ export const appRouter = createBrowserRouter([
       {
         path: "/restaurant/:id",
         element: <RestaurantMenu />,
+      },
+      {
+        path: "/cart",
+        element: <Cart />,
       },
     ],
   },
