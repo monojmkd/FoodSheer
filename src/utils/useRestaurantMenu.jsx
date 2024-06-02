@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 
-const useRestaurant = (id) => {
+const useRestaurantMenu = (id) => {
   const [restaurantMenu, setRestaurantMenu] = useState([]);
   const [restaurantDetails, setRestaurantDetails] = useState({});
 
@@ -32,4 +32,4 @@ const useRestaurant = (id) => {
   return [restaurantMenu, restaurantDetails];
 };
 
-export default useRestaurant;
+export default useRestaurantMenu;

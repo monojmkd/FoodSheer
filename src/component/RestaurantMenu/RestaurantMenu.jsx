@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import { IMG_CDN_URL, IMG_RESTAURANT_MENU_URL } from "../config";
 import "./RestaurantMenu.css";
 import ShimmerUI from "../Shimmer/ShimmerUI";
-import useRestaurant from "../../utils/useRestaurant";
+import useRestaurantMenu from "../../utils/useRestaurantMenu";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../Store/cartSlice";
 
@@ -17,7 +17,7 @@ const RestaurantMenu = () => {
     dispatch(addItem(item));
   };
 
-  const [restaurantMenu, restaurantDetails] = useRestaurant(id);
+  const [restaurantMenu, restaurantDetails] = useRestaurantMenu(id);
 
   return !restaurantMenu?.length === 0 ? (
     <ShimmerUI />
