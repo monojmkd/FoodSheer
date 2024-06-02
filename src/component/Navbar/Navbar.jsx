@@ -1,35 +1,58 @@
 import React, { useState } from "react";
-import "./Navbar.css";
 import { Link } from "react-router-dom";
 import useOnline from "../../utils/useOnline";
 import { useSelector } from "react-redux";
+import { FaSearch } from "react-icons/fa";
 
 const Navbar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(true);
-
+  // const [isLoggedIn, setIsLoggedIn] = useState(true);
   // const isOnline = useOnline();
   // <h1>{isOnline ? "✔✔" : "❌"}</h1>;
 
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="navbar">
-      <h1>Food Sheer</h1>
-      {/* <h1>{isOnline ? "✔✔" : "❌"}</h1> */}
-      <div className="nav-items">
-        <Link to="/">Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
+    <div className="flex justify-between items-center mx-28 py-5 pl-4 bg-black shadow-md rounded-b-3xl ">
+      <div>
+        <a className="text-5xl font-bold text-white font-cookie">
+          Food Sheer<span className="text-3xl text-red-600"> .</span>
+        </a>
+      </div>
+
+      <ul className="flex list-none font-sans">
+        <li className="ml-8 hover:bg-orange-300 h-10 w-16 text-center">
+          {" "}
+          <Link className="text-white text-lg hover:text-red-600 " to="/">
+            Home
+          </Link>
+        </li>
+        <li className="ml-8 hover:bg-orange-300 h-10 w-16 text-center">
+          {" "}
+          <Link className="text-white text-lg hover:text-red-600" to="/offers">
+            Offers
+          </Link>
+        </li>
+        <li className="ml-8 hover:bg-orange-300 h-10 w-16 text-center">
+          <Link className="text-white text-lg hover:text-red-600" to="/about">
+            About
+          </Link>
+        </li>
+        <li className="ml-8 hover:bg-orange-300 h-10 w-16 text-center">
+          <Link
+            className="text-white text-lg hover:text-red-600"
+            to="/services"
+          >
+            Services
+          </Link>
+        </li>
+      </ul>
+      <div className="">
+        <div>
+          search <FaSearch />
+        </div>
         <Link to="/cart">
           <li>Cart - {cartItems.length}</li>
         </Link>{" "}
-        <div>
-          {isLoggedIn ? (
-            <button onClick={() => setIsLoggedIn(false)}>Login</button>
-          ) : (
-            <button onClick={() => setIsLoggedIn(true)}>Log Out</button>
-          )}
-        </div>
       </div>
     </div>
   );

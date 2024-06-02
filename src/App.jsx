@@ -12,8 +12,10 @@ import Cart from "./component/Cart/Cart";
 function App() {
   return (
     <Provider store={store}>
-      <Navbar />
-      <Outlet />
+      <div className="bg-[#fff4ea]">
+        <Navbar />
+        <Outlet />
+      </div>
     </Provider>
   );
 }
