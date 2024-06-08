@@ -1,22 +1,22 @@
 .restaurant-list {
-    display: flex;
-    flex-wrap: wrap;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.shimmer-card {
+  width: 210px;
+  height: 320px;
+  background-color: #8d8d8d;
+  margin: 10px;
+  border-radius: 8px;
+  animation: shimmer 1s infinite linear;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200px 0;
   }
-  
-  .shimmer-card {
-    width: 210px;
-    height: 320px;
-    background-color: #8d8d8d;
-    margin: 10px;
-    border-radius: 8px;
-    animation: shimmer 1s infinite linear;
+  100% {
+    background-position: 200px 0;
   }
-  
-  @keyframes shimmer {
-    0% {
-      background-position: -200px 0;
-    }
-    100% {
-      background-position: 200px 0;
-    }
-  }
+}

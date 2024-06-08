@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import useOnline from "../../utils/useOnline";
 import { useSelector } from "react-redux";
-import { FaSearch } from "react-icons/fa";
+import { FaSearch, FaShoppingCart } from "react-icons/fa";
+import { PiShoppingCartLight } from "react-icons/pi";
 
 const Navbar = () => {
   // const [isLoggedIn, setIsLoggedIn] = useState(true);
@@ -20,39 +21,50 @@ const Navbar = () => {
       </div>
 
       <ul className="flex list-none font-sans">
-        <li className="ml-8 hover:bg-orange-300 h-10 w-16 text-center">
+        <li className="ml-8 rounded-2xl hover:bg-orange-300 h-11 w-16 flex justify-center items-center ">
           {" "}
-          <Link className="text-white text-lg hover:text-red-600 " to="/">
+          <Link className="text-white  text-lg hover:text-red-600  " to="/">
             Home
           </Link>
         </li>
-        <li className="ml-8 hover:bg-orange-300 h-10 w-16 text-center">
+        <li className="ml-8 rounded-2xl hover:bg-orange-300 h-11 w-16 flex justify-center items-center ">
           {" "}
-          <Link className="text-white text-lg hover:text-red-600" to="/offers">
+          <Link
+            className="text-white  text-lg hover:text-red-600 "
+            to="/offers"
+          >
             Offers
           </Link>
         </li>
-        <li className="ml-8 hover:bg-orange-300 h-10 w-16 text-center">
-          <Link className="text-white text-lg hover:text-red-600" to="/about">
+        <li className="ml-8 rounded-2xl hover:bg-orange-300 h-11 w-16 flex justify-center items-center ">
+          <Link className="text-white  text-lg hover:text-red-600 " to="/about">
             About
           </Link>
         </li>
-        <li className="ml-8 hover:bg-orange-300 h-10 w-16 text-center">
+        <li className="ml-8 rounded-2xl hover:bg-orange-300 h-11 w-20 flex justify-center items-center ">
           <Link
-            className="text-white text-lg hover:text-red-600"
+            className="text-white  text-lg hover:text-red-600 "
             to="/services"
           >
             Services
           </Link>
         </li>
       </ul>
-      <div className="">
-        <div>
-          search <FaSearch />
+      <div className="flex items-center mr-6">
+        <div className="flex items-center bg-white p-1 rounded-2xl shadow-md">
+          <FaSearch size={15} />
+          <input
+            className="border-none outline-none pl-2 rounded-xl text-lg"
+            type="text"
+            placeholder="Search"
+          />
         </div>
-        <Link to="/cart">
-          <li>Cart - {cartItems.length}</li>
-        </Link>{" "}
+        <div className="relative text-white ml-1  mr-3">
+          <FaShoppingCart size={25} />
+          <div className="absolute top-[-10px] right-[-18px] bg-orange-500 rounded-full px-2 py-1 text-xs ">
+            1
+          </div>
+        </div>
       </div>
     </div>
   );
