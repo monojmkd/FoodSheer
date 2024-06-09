@@ -13,14 +13,14 @@ const Navbar = () => {
   const cartItems = useSelector((store) => store.cart.items);
 
   return (
-    <div className="flex justify-between items-center mx-28 py-5 pl-4 bg-black shadow-md rounded-b-3xl ">
+    <div className="flex justify-between items-center mx-28 py-5 pl-10 bg-black shadow-md rounded-b-3xl ">
       <div>
-        <a className="text-5xl font-bold text-white font-cookie">
+        <a className="text-6xl font-bold text-white font-cookie">
           Food Sheer<span className="text-3xl text-red-600"> .</span>
         </a>
       </div>
 
-      <ul className="flex list-none font-sans">
+      <ul className="flex w-1/2 list-none font-sans">
         <li className="ml-8 rounded-2xl hover:bg-orange-300 h-11 w-16 flex justify-center items-center ">
           {" "}
           <Link className="text-white  text-lg hover:text-red-600  " to="/">
@@ -49,18 +49,18 @@ const Navbar = () => {
             Services
           </Link>
         </li>
+        <li className="ml-8 rounded-2xl hover:bg-orange-300 h-11 w-20 flex justify-center items-center ">
+          <Link
+            className="text-white  text-lg hover:text-red-600 "
+            to="/services"
+          >
+            Contact
+          </Link>
+        </li>
       </ul>
-      <div className="flex items-center mr-6">
-        <div className="flex items-center bg-white p-1 rounded-2xl shadow-md">
-          <FaSearch size={15} />
-          <input
-            className="border-none outline-none pl-2 rounded-xl text-lg"
-            type="text"
-            placeholder="Search"
-          />
-        </div>
-        <div className="relative text-white ml-1  mr-3">
-          <FaShoppingCart size={25} />
+      <div className="flex items-center pr-10">
+        <div className="relative text-white ">
+          <PiShoppingCartLight size={35} />
           <div className="absolute top-[-10px] right-[-18px] bg-orange-500 rounded-full px-2 py-1 text-xs ">
             1
           </div>

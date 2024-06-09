@@ -6,6 +6,7 @@ export default {
       fontFamily: {
         fredericka: ["Fredericka the Great", "serif"],
         cookie: ["Cookie", "cursive"],
+        ptserif: ["PT Serif", "serif"],
       },
     },
   },

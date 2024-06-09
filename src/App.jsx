@@ -8,13 +8,16 @@ import RestaurantMenu from "./component/RestaurantMenu/RestaurantMenu";
 import { Provider } from "react-redux";
 import store from "./Store/store";
 import Cart from "./component/Cart/Cart";
+import Footer from "./component/Footer/Footer";
 
 function App() {
   return (
     <Provider store={store}>
-      <div className="bg-[#fff4ea]">
+      <div className="bg-red-50">
+        {/* className="bg-[#fff4ea]" */}
         <Navbar />
         <Outlet />
+        <Footer />
       </div>
     </Provider>
   );
