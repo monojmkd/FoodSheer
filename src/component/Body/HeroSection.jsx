@@ -1,27 +1,28 @@
 import React from "react";
 import heroimage from "../../assets/heroimage.png";
 import arrowimage from "../../assets/arrow.png";
+
 const HeroSection = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-evenly p-10  ">
+    <div className="flex flex-col md:flex-row items-center justify-evenly p-4 md:p-10">
       {/* Left Text Section */}
-      <div className="text-center md:text-left md:w-1/5 relative ">
+      <div className="text-center md:text-left md:w-1/3 relative mb-8 md:mb-0">
         <div className="absolute top-0 left-0 transform -translate-x-1/3 -translate-y-1/4">
           <div className="w-28 h-28 bg-red-100 rounded-full"></div>
         </div>
-        <img className="absolute left-80" src={arrowimage} />
-        <h1 className="text-7xl md:text-7xl font-bold font-ptserif mb-4 relative z-10">
-          <span className=" relative z-20">Fastest</span> <br></br>
-          <span className="text-orange-500">Delivery</span> &<br></br> Easy
-          <span className="text-orange-500"> Pickup</span>
+        <img className="absolute left-80" src={arrowimage} alt="arrow" />
+        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-ptserif mb-4 relative z-10">
+          <span className="relative z-20">Fastest</span> <br />
+          <span className="text-orange-500">Delivery</span> &<br />
+          Easy <span className="text-orange-500">Pickup</span>
         </h1>
-        <p className="mb-12 text-xl">
+        <p className="mb-8 text-lg md:text-xl">
           When you are too lazy to cook, we are just a click away!
         </p>
-        <div className="flex flex-col sm:flex-row items-center gap-8">
-          <button className="bg-green-500 text-white px-2 py-2 rounded-full flex items-center">
+        <div className="flex flex-col sm:flex-row items-center gap-4">
+          <button className="bg-green-500 text-white px-4 py-2 rounded-full flex items-center">
             <svg
-              className="w-5 h-8 pr-1"
+              className="w-5 h-5 pr-1"
               fill="currentColor"
               viewBox="0 0 20 20"
             >
@@ -42,21 +43,25 @@ const HeroSection = () => {
         </div>
       </div>
       {/* Center Image */}
-      <div className="relative md:w-1/2  md:mt-0 flex justify-center">
-        <img src={heroimage} alt="Delivery" className="rounded-lg" />
+      <div className="relative md:w-1/3 mb-8 md:mb-0">
+        <img
+          src={heroimage}
+          alt="Delivery"
+          className="rounded-lg object-cover w-full h-full"
+        />
       </div>
-      {/* Left Text Section */}
-      <div className="flex flex-col text-white gap-16 md:w-1/5 md:text-left md:mt-0">
-        <div className="bg-red-500 rounded-2xl h-16 text-center">
-          <p className="text-xl font-bold">🚴‍♂️ Fast delivery</p>
+      {/* Right Text Section */}
+      <div className="flex flex-col text-white gap-4 md:w-1/3">
+        <div className="bg-red-500 rounded-2xl p-4 text-center">
+          <p className="text-lg font-bold">🚴‍♂️ Fast delivery</p>
           <p>Promise to deliver within 30 mins</p>
         </div>
-        <div className="bg-red-500 rounded-2xl h-16 text-center">
-          <p className="text-xl font-bold">📦 Pick Up</p>
+        <div className="bg-red-500 rounded-2xl p-4 text-center">
+          <p className="text-lg font-bold">📦 Pick Up</p>
           <p>Pickup delivery at your doorstep</p>
         </div>
-        <div className="bg-red-500 rounded-2xl h-16 text-center">
-          <p className="text-xl font-bold">🍽️ Dine in</p>
+        <div className="bg-red-500 rounded-2xl p-4 text-center">
+          <p className="text-lg font-bold">🍽️ Dine in</p>
           <p>Enjoy your food fresh, crispy, and hot</p>
         </div>
       </div>

@@ -14,7 +14,6 @@ function App() {
   return (
     <Provider store={store}>
       <div className="bg-red-50">
-        {/* className="bg-[#fff4ea]" */}
         <Navbar />
         <Outlet />
         <Footer />

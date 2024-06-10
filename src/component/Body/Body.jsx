@@ -1,5 +1,4 @@
 import React from "react";
-// import "./Body.css";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import ShimmerUI from "../Shimmer/ShimmerUI";
 import useRestaurantsCard from "../../utils/useRestaurantsCard";
@@ -15,15 +14,15 @@ const Body = () => {
   return loading ? (
     <ShimmerUI />
   ) : (
-    <div className="mx-32">
+    <div className="px-4 md:px-8 lg:px-16 pt-24">
       <HeroSection />
-      <hr className="my-4 "></hr>
+      <hr className="my-4" />
       {/* Search Section and Person Section */}
-      <div className="flex justify-between bg-gradient-to-r from-yellow-100 to-red-300 rounded-r-2xl shadow-lg transform transition-all duration-300 hover:scale-105">
-        <div className=" flex flex-col h-40 w-1/2 p-5 ">
+      <div className="flex flex-col md:flex-row justify-between items-center bg-gradient-to-r from-yellow-100 to-red-300 rounded-r-2xl shadow-lg transform transition-all duration-300 hover:scale-105 p-4 md:p-8">
+        <div className="flex flex-col h-auto md:h-40 w-full md:w-1/2 p-5">
           <div className="flex flex-col gap-3 p-3">
             <h1 className="text-2xl font-bold text-gray-800">
-              Search for your favourite restaurant . .{" "}
+              Search for your favourite restaurant . .
             </h1>
             <div className="flex items-center bg-white rounded-full p-2 shadow-inner">
               <FaSearch size={20} className="text-green-600 ml-2" />
@@ -43,7 +42,7 @@ const Body = () => {
         <VecPerson />
       </div>
 
-      <hr className="my-4 "></hr>
+      <hr className="my-4" />
       <div className="mx-auto">
         {filteredRestaurants.length === 0 ? (
           <div className="flex flex-col items-center mt-20">
@@ -55,7 +54,7 @@ const Body = () => {
             </div>
           </div>
         ) : (
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 ">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
             {filteredRestaurants.map((restaurant) => (
               <RestaurantCard
                 key={restaurant?.info?.id}
@@ -65,7 +64,7 @@ const Body = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-col ml-10 items-center mt-4">
+      <div className="flex flex-col items-center mt-4">
         <ScrollToTop />
       </div>
     </div>
