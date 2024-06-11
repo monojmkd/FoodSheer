@@ -4,14 +4,18 @@ import arrowimage from "../../assets/arrow.png";
 
 const HeroSection = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-evenly p-4 md:p-10">
+    <div className="flex flex-col md:flex-row items-center justify-evenly p-4 pt-20 md:p-10">
       {/* Left Text Section */}
       <div className="text-center md:text-left md:w-1/3 relative mb-8 md:mb-0">
-        <div className="absolute top-0 left-0 transform -translate-x-1/3 -translate-y-1/4">
-          <div className="w-28 h-28 bg-red-100 rounded-full"></div>
+        <div className="absolute top-0 left-16 lg:left-0 transform -translate-x-1/3 -translate-y-1/4">
+          <div className="w-28 h-28  bg-red-100 rounded-full"></div>
         </div>
-        <img className="absolute left-80" src={arrowimage} alt="arrow" />
-        <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold font-ptserif mb-4 relative z-10">
+        <img
+          className="absolute left-52 lg:left-80"
+          src={arrowimage}
+          alt="arrow"
+        />
+        <h1 className="text-6xl lg:text-6xl font-bold font-ptserif mb-4 relative z-10">
           <span className="relative z-20">Fastest</span> <br />
           <span className="text-orange-500">Delivery</span> &<br />
           Easy <span className="text-orange-500">Pickup</span>
@@ -43,7 +47,7 @@ const HeroSection = () => {
         </div>
       </div>
       {/* Center Image */}
-      <div className="relative md:w-1/3 mb-8 md:mb-0">
+      <div className="relative md:w-1/2 mb-8 md:mb-0">
         <img
           src={heroimage}
           alt="Delivery"
@@ -51,18 +55,18 @@ const HeroSection = () => {
         />
       </div>
       {/* Right Text Section */}
-      <div className="flex flex-col text-white gap-4 md:w-1/3">
-        <div className="bg-red-500 rounded-2xl p-4 text-center">
-          <p className="text-lg font-bold">🚴‍♂️ Fast delivery</p>
-          <p>Promise to deliver within 30 mins</p>
+      <div className="flex flex-col text-white gap-6 md:ml-16 md:w-1/5">
+        <div className="bg-red-500 rounded-2xl p-2 text-center">
+          <p className="text-base font-bold">🚴‍♂️ Fast delivery</p>
+          <p className="text-sm">Promise to deliver within 30 mins</p>
         </div>
-        <div className="bg-red-500 rounded-2xl p-4 text-center">
-          <p className="text-lg font-bold">📦 Pick Up</p>
-          <p>Pickup delivery at your doorstep</p>
+        <div className="bg-red-500 rounded-2xl p-2 text-center">
+          <p className="text-base font-bold">📦 Pick Up</p>
+          <p className="text-sm">Pickup delivery at your doorstep</p>
         </div>
-        <div className="bg-red-500 rounded-2xl p-4 text-center">
-          <p className="text-lg font-bold">🍽️ Dine in</p>
-          <p>Enjoy your food fresh, crispy, and hot</p>
+        <div className="bg-red-500 rounded-2xl p-2 text-center">
+          <p className="text-base font-bold">🍽️ Dine in</p>
+          <p className="text-sm">Enjoy your food fresh, crispy, and hot</p>
         </div>
       </div>
     </div>

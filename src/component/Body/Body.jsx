@@ -14,7 +14,7 @@ const Body = () => {
   return loading ? (
     <ShimmerUI />
   ) : (
-    <div className="px-4 md:px-8 lg:px-16 pt-24">
+    <div className="px-4 md:px-8 lg:px-16 lg:pt-14">
       <HeroSection />
       <hr className="my-4" />
       {/* Search Section and Person Section */}

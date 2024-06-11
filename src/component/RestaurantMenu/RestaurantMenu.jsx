@@ -21,7 +21,7 @@ const RestaurantMenu = () => {
   return restaurantMenu.length === 0 ? (
     <ShimmerUI />
   ) : (
-    <div className="p-4  mt-20 md:p-8">
+    <div className="p-4 lg:pt-20 md:p-8">
       <div className="bg-white rounded-lg shadow-md p-4 md:p-8 mb-8">
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <img
@@ -37,13 +37,13 @@ const RestaurantMenu = () => {
               {restaurantDetails.locality}
             </h2>
             <h2 className="text-lg text-gray-700 mb-2">
-              {restaurantDetails.cuisines}
+              {restaurantDetails.cuisines.join(", ")}
             </h2>
             <h2 className="text-lg text-gray-700 mb-2">
               {restaurantDetails.costForTwoMessage}
             </h2>
             <h3 className="text-lg text-yellow-500 font-semibold">
-              {restaurantDetails.avgRating} stars
+              {restaurantDetails.avgRating} stars ⭐
             </h3>
           </div>
         </div>

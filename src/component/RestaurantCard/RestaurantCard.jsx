@@ -9,7 +9,7 @@ const RestaurantCard = ({ restaurant }) => {
         <img
           src={IMG_CDN_URL + restaurant.info?.cloudinaryImageId}
           alt="restaurant"
-          className="w-full h-40 md:h-60 object-cover"
+          className="w-full h-32 md:h-52 object-cover"
         />
         <div className="p-4">
           <h4 className="text-lg md:text-xl font-bold">
