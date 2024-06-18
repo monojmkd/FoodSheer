@@ -1,5 +1,5 @@
 import React from "react";
-import { IMG_CDN_URL } from "../../config";
+import { IMG_CDN_URL } from "../../../utils/config";
 
 const FoodItem = ({ menu }) => {
   const { imageId, name, price, defaultPrice } = menu?.card?.info || {};

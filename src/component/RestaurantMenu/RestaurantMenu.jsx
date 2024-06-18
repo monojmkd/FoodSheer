@@ -1,6 +1,6 @@
 import React from "react";
 import { useParams } from "react-router-dom";
-import { IMG_CDN_URL, IMG_RESTAURANT_MENU_URL } from "../config";
+import { IMG_CDN_URL, IMG_RESTAURANT_MENU_URL } from "../../utils/config";
 import ShimmerUI from "../Shimmer/ShimmerUI";
 import useRestaurantMenu from "../../utils/useRestaurantMenu";
 import { useDispatch } from "react-redux";

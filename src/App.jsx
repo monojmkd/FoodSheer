@@ -9,6 +9,7 @@ import { Provider } from "react-redux";
 import store from "./Store/store";
 import Cart from "./component/Cart/Cart";
 import Footer from "./component/Footer/Footer";
+import LocationSidebar from "./component/Sidebar/LocationSidebar";
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
       <div className="bg-red-50">
         <Navbar />
         <Outlet />
+        <LocationSidebar />
         <Footer />
       </div>
     </Provider>

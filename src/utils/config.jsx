@@ -622,3 +622,9 @@ export const restaurantList = [
     },
   },
 ];
+
+export const LOCATION_API =
+  "api/proxy/swiggy/dapi/misc/place-autocomplete?input=";
+
+export const ADDRESS_API =
+  "api/proxy/swiggy/dapi/misc/address-recommend?place_id=";

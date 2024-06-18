@@ -1,18 +1,26 @@
 import { useState, useEffect } from "react";
 import { filterData } from "./helper";
+import { useSelector } from "react-redux";
 
 const useRestaurantsCard = (initialSearchText = "") => {
   const [allRestaurants, setAllRestaurants] = useState([]);
   const [filteredRestaurants, setFilteredRestaurants] = useState([]);
   const [searchText, setSearchText] = useState(initialSearchText);
   const [loading, setLoading] = useState(true);
+  const userLocation = useSelector((store) => store.location.userLocation);
 
+  const lat = userLocation?.lat ? userLocation?.lat : 26.7784904;
+  const lng = userLocation?.lng ? userLocation?.lng : 94.2216606;
+
+  // const lat = 26.7784904;
+  // const lng = 94.2216606;
   useEffect(() => {
     const getRestaurants = async () => {
       setLoading(true);
       try {
         const data = await fetch(
-          "https://www.swiggy.com/dapi/restaurants/list/v5?lat=26.7784904&lng=94.21539600000001&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING"
+          import.meta.env.VITE_BASE_URL +
+            `api/proxy/swiggy/dapi/restaurants/list/v5?lat=${lat}&lng=${lng}&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING`
         );
         const json = await data.json();
         const restaurants =

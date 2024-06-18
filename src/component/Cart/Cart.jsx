@@ -28,7 +28,7 @@ const Cart = () => {
   );
 
   return (
-    <div className="container mx-auto p-4 md:p-8 lg:p-16 pt-16">
+    <div className="container mx-auto p-4 md:p-8 lg:p-16 lg:pt-20 pt-16">
       <div className="flex justify-between items-center mb-6">
         <h2 className="text-3xl font-bold">Cart Items: {cartItems.length}</h2>
         <button

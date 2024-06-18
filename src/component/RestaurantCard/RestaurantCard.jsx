@@ -1,5 +1,5 @@
 import React from "react";
-import { IMG_CDN_URL } from "../config";
+import { IMG_CDN_URL } from "../../utils/config";
 import { Link } from "react-router-dom";
 
 const RestaurantCard = ({ restaurant }) => {
