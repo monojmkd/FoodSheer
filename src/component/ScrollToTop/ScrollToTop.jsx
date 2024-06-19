@@ -27,13 +27,13 @@ const ScrollToTop = () => {
   }, []);
 
   return (
-    <div>
+    <div className="flex pl-6">
       {isVisible && (
         <button
           onClick={handleScrollToTop}
-          className=" left-1/2 transform -translate-x-1/2 bg-red-400 text-white p-3 rounded-full shadow-lg hover:bg-orange-600 transition-colors"
+          className=" left-1/2 transform -translate-x-1/2 bg-red-400  p-3 text-white rounded-xl shadow-lg hover:bg-orange-600 transition-colors"
         >
-          <FaArrowUp size={20} />
+          <FaArrowUp size={18} />
         </button>
       )}
     </div>

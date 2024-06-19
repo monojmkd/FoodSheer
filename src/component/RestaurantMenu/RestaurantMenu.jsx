@@ -5,6 +5,7 @@ import ShimmerUI from "../Shimmer/ShimmerUI";
 import useRestaurantMenu from "../../utils/useRestaurantMenu";
 import { useDispatch } from "react-redux";
 import { addItem } from "../../Store/cartSlice";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 const RestaurantMenu = () => {
   const params = useParams();
@@ -21,7 +22,7 @@ const RestaurantMenu = () => {
   return restaurantMenu.length === 0 ? (
     <ShimmerUI />
   ) : (
-    <div className="p-4 lg:pt-20 md:p-8">
+    <div className="p-4 lg:pt-20 pt-16 md:p-8">
       <div className="bg-white rounded-lg shadow-md p-4 md:p-8 mb-8">
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <img
@@ -29,7 +30,7 @@ const RestaurantMenu = () => {
             alt="restaurant"
             className="w-full md:w-1/3 rounded-lg shadow-md mb-4 md:mb-0 md:mr-8 object-cover h-64"
           />
-          <div className="text-center md:text-left">
+          <div className="text-center md:text-left ">
             <h1 className="text-3xl font-bold mb-2">
               {restaurantDetails.name}
             </h1>
@@ -60,7 +61,7 @@ const RestaurantMenu = () => {
                 key={menu?.card?.info?.id}
               >
                 <img
-                  className="menu-image w-28 h-28 object-cover rounded-lg mb-4 md:mb-0 md:mr-4"
+                  className="menu-image w-28 h-28 p-2 object-cover rounded-xl mb-4 md:mb-0 md:mr-4"
                   alt="menu"
                   src={IMG_RESTAURANT_MENU_URL + menu?.card?.info?.imageId}
                 />
@@ -78,7 +79,7 @@ const RestaurantMenu = () => {
                       : menu?.card?.info?.defaultPrice / 100}
                   </p>
                   <button
-                    className="bg-green-500 text-white px-4 py-2 rounded-full mt-auto hover:bg-green-600 transition-colors"
+                    className="bg-green-500 text-sm text-white px-4 py-2 rounded-full mt-auto hover:bg-green-600 transition-colors"
                     onClick={() => addFoodItem(menu)}
                   >
                     ADD
@@ -88,6 +89,9 @@ const RestaurantMenu = () => {
             ))}
           </ul>
         </div>
+      </div>
+      <div className="flex justify-center mt-2">
+        <ScrollToTop />
       </div>
     </div>
   );

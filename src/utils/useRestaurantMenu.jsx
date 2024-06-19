@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 
 const useRestaurantMenu = (id) => {
@@ -19,7 +19,7 @@ const useRestaurantMenu = (id) => {
   //   id +
   //   `&catalog_qa=undefined&isMenuUx4=true&submitAction=ENTER`
 
-  async function getRestaurantInfo() {
+  const getRestaurantInfo = useCallback(async () => {
     const data = await fetch(
       import.meta.env.VITE_BASE_URL +
         `api/proxy/swiggy/dapi/menu/pl?page-type=REGULAR_MENU&complete-menu=true&lat=${lat}&lng=${lng}&restaurantId=` +
@@ -51,7 +51,7 @@ const useRestaurantMenu = (id) => {
     //       ?.card?.itemCards
     //   );
     // }
-  }
+  });
 
   return [restaurantMenu, restaurantDetails];
 };
