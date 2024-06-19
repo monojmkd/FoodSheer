@@ -5,7 +5,7 @@ import useRestaurantsCard from "../../utils/useRestaurantsCard";
 import HeroSection from "./HeroSection";
 import { FaSearch } from "react-icons/fa";
 import VecPerson from "./VecPerson";
-import ScrollToTop from "./ScrollToTop";
+import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 const Body = () => {
   const { filteredRestaurants, searchText, setSearchText, loading } =

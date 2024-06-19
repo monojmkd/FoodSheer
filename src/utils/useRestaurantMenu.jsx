@@ -28,17 +28,29 @@ const useRestaurantMenu = (id) => {
     );
     const json = await data.json();
     setRestaurantDetails(json?.data?.cards[2]?.card?.card?.info);
-    const recommendedList =
-      json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
-        ?.card?.itemCards;
-    if (recommendedList) {
-      setRestaurantMenu(recommendedList);
-    } else {
-      setRestaurantMenu(
-        json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
-          ?.card?.itemCards
-      );
-    }
+    const groupedCard = Boolean(json?.data?.cards[4]?.groupedCard)
+      ? json?.data?.cards[4]?.groupedCard
+      : json?.data?.cards[5]?.groupedCard;
+
+    // json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card
+    //     ?.card?.itemCards;
+    const recommendedList = Boolean(
+      groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards
+    )
+      ? groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards
+      : groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card?.card?.itemCards;
+
+    // groupedCard?.cardGroupMap?.REGULAR?.cards[1]?.card?.card?.itemCards;
+
+    setRestaurantMenu(recommendedList);
+    // if (recommendedList) {
+    //   setRestaurantMenu(recommendedList);
+    // } else {
+    //   setRestaurantMenu(
+    //     json?.data?.cards[4]?.groupedCard?.cardGroupMap?.REGULAR?.cards[2]?.card
+    //       ?.card?.itemCards
+    //   );
+    // }
   }
 
   return [restaurantMenu, restaurantDetails];
