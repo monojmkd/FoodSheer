@@ -68,7 +68,7 @@ const LocationSidebar = () => {
   return (
     <>
       <div
-        className={`fixed top-0 h-full overflow-y-scroll bg-white transition-all duration-500 z-20 sm:px-10 px-5 py-5 w-full sm:py-10 flex flex-col sm:w-[400px] ${
+        className={`fixed top-0 h-full overflow-y-scroll bg-white transition-all duration-500 z-30 sm:px-10 px-5 py-5 w-full sm:py-10 flex flex-col sm:w-[400px] ${
           isLocationSidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >

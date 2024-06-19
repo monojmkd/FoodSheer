@@ -4,7 +4,7 @@ import arrowimage from "../../assets/arrow.png";
 
 const HeroSection = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-evenly p-4 pt-20 md:p-10">
+    <div className="flex flex-col md:flex-row items-center justify-evenly p-4 lg:pt-20 pt-24 md:p-10">
       {/* Left Text Section */}
       <div className="text-center md:text-left md:w-1/3 relative mb-8 md:mb-0">
         <div className="absolute top-0 left-16 lg:left-0 transform -translate-x-1/3 -translate-y-1/4">

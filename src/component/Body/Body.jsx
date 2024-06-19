@@ -24,7 +24,7 @@ const Body = () => {
             <h1 className="text-2xl font-bold text-gray-800">
               Search for your favourite restaurant . .
             </h1>
-            <div className="flex items-center bg-white rounded-full p-2 shadow-inner">
+            <div className="flex items-center bg-white rounded-full lg:p-2 shadow-inner">
               <FaSearch size={20} className="text-green-600 ml-2" />
               <input
                 className="border-none outline-none pl-2 text-lg flex-grow rounded-full"

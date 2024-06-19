@@ -25,7 +25,7 @@ const Navbar = () => {
   };
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-10 flex justify-between items-center mx-6 lg:mx-28 py-3 pl-6 lg:pl-10 bg-black shadow-md rounded-b-3xl">
+    <div className="fixed top-0 left-0 right-0 z-20 flex justify-between items-center mx-6 lg:mx-28 py-3 pl-6 lg:pl-10 bg-black shadow-md rounded-b-3xl">
       <div>
         <Link
           to="/"
@@ -34,7 +34,7 @@ const Navbar = () => {
           Food Sheer<span className="text-3xl text-red-600"> .</span>
         </Link>
       </div>
-      <div className="flex flex-col items-center gap-2 group sidebar-btn ">
+      <div className="flex flex-col items-center gap-1  ">
         <button
           onClick={handleLocationSidebar}
           type="button"
@@ -45,7 +45,7 @@ const Navbar = () => {
         <p className="text-xs">
           {" "}
           {userLocation ? (
-            <span className="block text-slate-400 text-xs  group-hover:text-color-5">
+            <span className="block text-slate-400 text-[11px] lg:text-xs ">
               {truncateStr(userLocation?.address)}
             </span>
           ) : (
@@ -57,7 +57,7 @@ const Navbar = () => {
       <div className="lg:hidden flex items-center">
         <Link to="/cart">
           <div className="relative text-white mr-4">
-            <PiShoppingCartLight size={24} />
+            <PiShoppingCartLight size={25} />
             <div className="absolute top-[-8px] right-[-8px] bg-orange-500 rounded-full px-2 py-1 text-xs">
               {cartItems.length}
             </div>
@@ -71,7 +71,7 @@ const Navbar = () => {
       <ul
         className={`${
           isMobileMenuOpen ? "block" : "hidden"
-        } lg:flex lg:w-1/2 lg:ml-18 list-none font-sans absolute lg:static top-16 left-0 lg:top-0 bg-black lg:bg-transparent w-full  p-5 lg:p-0`}
+        } lg:flex lg:w-1/2 lg:ml-18 list-none font-sans absolute lg:static top-16 left-0 lg:top-0 bg-black lg:bg-transparent w-full rounded-xl p-5 lg:p-0`}
       >
         <li className="ml-4 my-4 lg:my-0 lg:px-2 rounded-2xl hover:bg-orange-300 h-11 flex justify-center items-center">
           <Link
@@ -118,7 +118,7 @@ const Navbar = () => {
             Contact
           </Link>
         </li>
-        <li className="ml-4 lg:ml-8 my-4 lg:my-0 lg:hidden flex justify-center items-center">
+        <li className="hidden ml-4 lg:ml-8 my-4 lg:my-0 lg:hidden justify-center items-center">
           <Link to="/cart" onClick={toggleMobileMenu}>
             <div className="relative text-white">
               <PiShoppingCartLight size={24} />
