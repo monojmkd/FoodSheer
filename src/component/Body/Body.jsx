@@ -11,6 +11,9 @@ const Body = () => {
   const { filteredRestaurants, searchText, setSearchText, loading } =
     useRestaurantsCard();
 
+  // console.log("filteredRestaurants:", filteredRestaurants);
+  // console.log("loading:", loading);
+
   return loading ? (
     <ShimmerUI />
   ) : (
