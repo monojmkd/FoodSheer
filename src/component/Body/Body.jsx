@@ -28,23 +28,23 @@ const Body = () => {
       <hr className="my-4" />
       {/* Search Section and Person Section */}
       <div className="flex flex-col md:flex-row justify-between items-center bg-gradient-to-r from-yellow-100 to-red-300 rounded-r-2xl shadow-lg transform transition-all duration-300 hover:scale-105 p-4 md:p-8">
-        <div className="flex flex-col h-auto md:h-40 w-full md:w-1/2 p-5">
+        <div className="flex flex-col md:h-40 h:auto w-full md:w-1/2 p-5">
           <div className="flex flex-col gap-3 p-3">
             <h1 className="text-2xl font-bold text-gray-800">
               Search for your favourite restaurant . .
             </h1>
-            <div className="flex items-center bg-white rounded-full lg:p-2 shadow-inner">
+            <div className="flex items-center bg-white rounded-full lg:p-2 h-10 shadow-inner">
               <FaSearch size={20} className="text-green-600 ml-2" />
               <input
-                className="border-none outline-none pl-2 text-lg flex-grow rounded-full"
+                className="border-none outline-none pl-2 text-lg rounded-full"
                 type="text"
                 placeholder="Search"
                 value={searchText}
                 onChange={(e) => setSearchText(e.target.value)}
               />
-              <button className="bg-green-500 text-white rounded-full px-4 py-2 ml-2 hover:bg-green-600 transition-colors">
+              {/* <button className="bg-green-500 text-white rounded-full px-4 py-2 ml-2 text-end hover:bg-green-600 transition-colors">
                 Search
-              </button>
+              </button> */}
             </div>
           </div>
         </div>
