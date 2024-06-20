@@ -36,7 +36,7 @@ const Body = () => {
             <div className="flex items-center bg-white rounded-full lg:p-2 h-10 shadow-inner">
               <FaSearch size={20} className="text-green-600 ml-2" />
               <input
-                className="border-none outline-none pl-2 text-lg rounded-full"
+                className="border-none outline-none flex-grow pl-2 text-lg rounded-full"
                 type="text"
                 placeholder="Search"
                 value={searchText}
