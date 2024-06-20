@@ -27,7 +27,7 @@ const ScrollToTop = () => {
   }, []);
 
   return (
-    <div className="flex pl-6">
+    <div className="flex pl-8">
       {isVisible && (
         <button
           onClick={handleScrollToTop}

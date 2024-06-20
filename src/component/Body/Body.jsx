@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef } from "react";
 import RestaurantCard from "../RestaurantCard/RestaurantCard";
 import ShimmerUI from "../Shimmer/ShimmerUI";
 import useRestaurantsCard from "../../utils/useRestaurantsCard";
@@ -6,16 +6,25 @@ import HeroSection from "./HeroSection";
 import { FaSearch } from "react-icons/fa";
 import VecPerson from "./VecPerson";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
+import DownloadOurApp from "./DownloadOurApp";
 
 const Body = () => {
   const { filteredRestaurants, searchText, setSearchText, loading } =
     useRestaurantsCard();
 
+  const restaurantSectionRef = useRef(null);
+
+  const scrollToRestaurants = () => {
+    if (restaurantSectionRef.current) {
+      restaurantSectionRef.current.scrollIntoView({ behavior: "smooth" });
+    }
+  };
+
   return loading ? (
     <ShimmerUI />
   ) : (
     <div className="px-4 md:px-8 lg:px-16 lg:pt-14">
-      <HeroSection />
+      <HeroSection scrollToRestaurants={scrollToRestaurants} />
       <hr className="my-4" />
       {/* Search Section and Person Section */}
       <div className="flex flex-col md:flex-row justify-between items-center bg-gradient-to-r from-yellow-100 to-red-300 rounded-r-2xl shadow-lg transform transition-all duration-300 hover:scale-105 p-4 md:p-8">
@@ -43,7 +52,7 @@ const Body = () => {
       </div>
 
       <hr className="my-4" />
-      <div className="mx-auto">
+      <div ref={restaurantSectionRef} className="mx-auto">
         {filteredRestaurants.length === 0 ? (
           <div className="flex flex-col items-center mt-20">
             <div className="flex flex-col items-center bg-red-100 p-8 rounded-lg border border-red-200">
@@ -66,6 +75,9 @@ const Body = () => {
       </div>
       <div className="flex flex-col items-center mt-4">
         <ScrollToTop />
+      </div>
+      <div>
+        <DownloadOurApp />
       </div>
     </div>
   );

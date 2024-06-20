@@ -133,7 +133,7 @@ const Navbar = () => {
         <Link to="/cart">
           <div className="relative text-white">
             <PiShoppingCartLight size={35} />
-            <div className="absolute top-[-10px] right-[-10px] bg-orange-500 rounded-full px-2 py-1 text-xs">
+            <div className="absolute animate-bounce top-[-10px] right-[-10px] bg-orange-500 rounded-full px-2 py-1 text-xs">
               {cartItems.length}
             </div>
           </div>

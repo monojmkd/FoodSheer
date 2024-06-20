@@ -4,7 +4,6 @@ export default {
   theme: {
     extend: {
       fontFamily: {
-        fredericka: ["Fredericka the Great", "serif"],
         cookie: ["Cookie", "cursive"],
         ptserif: ["PT Serif", "serif"],
       },

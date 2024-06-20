@@ -10,6 +10,8 @@ import store from "./Store/store";
 import Cart from "./component/Cart/Cart";
 import Footer from "./component/Footer/Footer";
 import LocationSidebar from "./component/Sidebar/LocationSidebar";
+import Offers from "./component/Offers/Offers";
+import Services from "./component/Services/Services";
 
 function App() {
   return (
@@ -41,6 +43,14 @@ export const appRouter = createBrowserRouter([
       {
         path: "/contact",
         element: <Contact />,
+      },
+      {
+        path: "/Offers",
+        element: <Offers />,
+      },
+      {
+        path: "/services",
+        element: <Services />,
       },
       {
         path: "/restaurant/:id",
