@@ -36,11 +36,11 @@ Check out the live demo of the project [here](https://foodsheer.vercel.app/).
 
 ## Screenshots
 
-!(./screenshots/screenshot1.bmp)
+![Home page](./screenshots/screenshot1.png)
 
-!(./screenshots/screenshot2.bmp)
+![Restaurants](./screenshots/screenshot2.png)
 
-!(./screenshots/screenshot3.bmp)
+![Restaurant Menu](./screenshots/screenshot3.png)
 
 ## Contributing
 
