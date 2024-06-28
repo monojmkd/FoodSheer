@@ -23,11 +23,11 @@ const Body = () => {
   return loading ? (
     <ShimmerUI />
   ) : (
-    <div className="px-4 md:px-8 lg:px-16 lg:pt-14">
+    <div className="lg:px-16 lg:pt-14">
       <HeroSection scrollToRestaurants={scrollToRestaurants} />
       <hr className="my-4" />
       {/* Search Section and Person Section */}
-      <div className="flex flex-col md:flex-row justify-between items-center bg-gradient-to-r from-yellow-100 to-red-300 rounded-r-2xl shadow-lg transform transition-all duration-300 hover:scale-105 p-4 md:p-8">
+      <div className="flex flex-col md:flex-row justify-between items-center bg-gradient-to-r from-yellow-100 to-red-300 rounded-r-2xl shadow-lg transform transition-all duration-300 hover:scale-105  md:px-8 ">
         <div className="flex flex-col md:h-40 h:auto w-full md:w-1/2 p-5">
           <div className="flex flex-col gap-3 p-3">
             <h1 className="text-2xl font-bold text-gray-800">
@@ -73,11 +73,11 @@ const Body = () => {
           </div>
         )}
       </div>
-      <div className="flex flex-col items-center mt-4">
-        <ScrollToTop />
-      </div>
       <div>
         <DownloadOurApp />
+      </div>
+      <div className="flex flex-col items-center mt-4">
+        <ScrollToTop />
       </div>
     </div>
   );

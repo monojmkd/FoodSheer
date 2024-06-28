@@ -11,7 +11,9 @@ const Footer = () => {
     <footer className="bg-gray-900 text-gray-300 py-8 mt-4">
       <div className="container mx-auto flex flex-col md:flex-row justify-between items-center space-y-8 md:space-y-0 md:space-x-16 px-4">
         <div className="flex flex-col items-center md:items-start text-center md:text-left">
-          <h2 className="text-4xl font-bold font-cookie mb-2">Food Sheer.</h2>
+          <h2 className="text-4xl font-bold font-cookie mb-2">
+            Food Sheer<span className="text-2xl text-red-600"> .</span>
+          </h2>
           <p className="text-sm">Fastest Delivery & Easy Pickup</p>
         </div>
         <div className="text-center md:text-left">

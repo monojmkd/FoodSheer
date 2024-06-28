@@ -11,9 +11,9 @@ import { Link } from "react-router-dom";
 
 const DownloadOurApp = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-evenly bg-gradient-to-r from-orange-200 to-red-600 md:h-52 md:my-24 p-6 md:p-10 rounded-lg shadow-lg mt-28">
+    <div className="flex flex-col md:flex-row items-center justify-evenly bg-gradient-to-r from-orange-200 to-red-600 md:h-52 md:my-24 rounded-lg shadow-lg lg:mt-32 mt-36">
       {/* Left Section - App Screenshot */}
-      <div className="w-2/3 md:w-1/5 my-6 mt-[-150px] md:mt-0 md:mb-0">
+      <div className="w-2/3 md:w-1/5 my-6 mt-[-150px] md:mt-0  md:mb-0">
         <img
           src={appImage}
           alt="App Screenshot"
@@ -45,19 +45,19 @@ const DownloadOurApp = () => {
       </div>
 
       {/* Right Section - Cloud Kitchen */}
-      <div className="flex justify-center items-center md:justify-start w-full mt-[-50px] md:mt-0 md:w-1/3 md:mr-10 gap-2 md:gap-2">
+      <div className="flex justify-center items-center md:justify-start w-full mt-[-50px] md:mt-0 md:w-1/2 gap-2 md:gap-2">
         <img
-          className="w-16 md:w-28 h-16 md:h-28 rounded-full shadow-rose-300 shadow-md"
+          className="w-16 md:w-28 h-16 md:h-28 rounded-full shadow-rose-200 shadow-md"
           src={pizza}
           alt="Pizza"
         />
         <img
-          className="w-16 md:w-28 h-16 md:h-28 rounded-full shadow-rose-300 shadow-md"
+          className="w-16 md:w-28 h-16 md:h-28 rounded-full shadow-rose-200 shadow-md"
           src={fries}
           alt="Fries"
         />
         <img
-          className="w-16 md:w-28 h-16 md:h-28 rounded-full shadow-rose-300 shadow-md"
+          className="w-16 md:w-28 h-16 md:h-28 rounded-full shadow-rose-200 shadow-md"
           src={burger}
           alt="Burger"
         />

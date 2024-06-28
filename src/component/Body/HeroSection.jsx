@@ -4,14 +4,14 @@ import arrowimage from "../../assets/arrow.png";
 
 const HeroSection = ({ scrollToRestaurants }) => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-evenly p-4 lg:pt-18 pt-24 md:p-10">
+    <div className="flex flex-col md:flex-row items-center justify-evenly lg:pt-18 pt-32 md:p-10">
       {/* Left Text Section */}
       <div className="text-center md:text-left md:w-1/3 relative mb-8 md:mb-0">
         <div className="absolute top-0 left-16 lg:left-0 transform -translate-x-1/3 -translate-y-1/4">
           <div className="w-28 h-28  bg-red-100 rounded-full"></div>
         </div>
         <img
-          className="absolute left-52 lg:left-80"
+          className="absolute right-2 lg:left-64"
           src={arrowimage}
           alt="arrow"
         />
@@ -20,7 +20,7 @@ const HeroSection = ({ scrollToRestaurants }) => {
           <span className="text-orange-500">Delivery</span> &<br />
           Easy <span className="text-orange-500">Pickup</span>
         </h1>
-        <p className="mb-8 text-lg md:text-xl">
+        <p className="mb-8 text-lg px-1 md:text-xl">
           When you are too lazy to cook, we are just a click away!
         </p>
         <div className="flex flex-col sm:flex-row items-center gap-4">
