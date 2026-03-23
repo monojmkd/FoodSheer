@@ -1,73 +1,146 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { clearCart } from "../../Store/cartSlice";
+import {
+  clearCart,
+  removeItem,
+  removeItemCompletely,
+} from "../../Store/cartSlice";
 import FoodItem from "./FoodItem/FoodItem";
 
 const Cart = () => {
   const cartItems = useSelector((store) => store.cart.items);
   const dispatch = useDispatch();
   const [orderPlaced, setOrderPlaced] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleClearCart = () => {
     dispatch(clearCart());
   };
 
   const handleOrder = () => {
-    setOrderPlaced(true);
-    dispatch(clearCart());
+    if (isSubmitting) return; // prevent double-click
+    setIsSubmitting(true);
+    // Simulate an async order submission
     setTimeout(() => {
-      setOrderPlaced(false);
-    }, 3000); // Reset orderPlaced after 3 seconds
+      dispatch(clearCart());
+      setOrderPlaced(true);
+      setIsSubmitting(false);
+      setTimeout(() => setOrderPlaced(false), 4000);
+    }, 800);
   };
 
-  const totalAmount = cartItems.reduce(
-    (total, menu) =>
-      total +
-      (menu?.card?.info?.price || menu?.card?.info?.defaultPrice || 0) / 100,
-    0
+  // Sum raw paisa values first to avoid float precision issues
+  const totalPaisa = cartItems.reduce(
+    (sum, item) =>
+      sum +
+      (item?.card?.info?.price || item?.card?.info?.defaultPrice || 0) *
+        (item.quantity || 1),
+    0,
+  );
+  const totalAmount = (totalPaisa / 100).toFixed(2);
+
+  const totalItems = cartItems.reduce(
+    (sum, item) => sum + (item.quantity || 1),
+    0,
   );
 
   return (
-    <div className="container mx-auto p-4 md:p-8 lg:p-16 lg:pt-20 pt-24">
+    <div className="container mx-auto p-4 md:p-8 lg:p-16 lg:pt-24 pt-24 min-h-screen">
+      {/* Header */}
       <div className="flex justify-between items-center mb-6">
-        <h2 className="text-3xl font-bold">Cart Items: {cartItems.length}</h2>
-        <button
-          onClick={handleClearCart}
-          className="bg-red-500 text-white px-4 py-2 rounded-lg hover:bg-red-600 transition-colors"
-        >
-          Clear Cart
-        </button>
-      </div>
-      {orderPlaced && (
-        <div className="mb-4 p-4 bg-green-200 text-green-800 rounded-lg text-center">
-          Order placed successfully!
+        <div>
+          <h2 className="text-3xl font-bold text-gray-800">Your Cart</h2>
+          <p className="text-gray-500 text-sm mt-1">
+            {totalItems} {totalItems === 1 ? "item" : "items"}
+          </p>
         </div>
-      )}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {cartItems.length === 0 ? (
-          <div className="col-span-full text-center text-xl">
-            Your cart is empty. Add some items to see them here!
-          </div>
-        ) : (
-          cartItems.map((menu) => (
-            <FoodItem key={menu?.card?.info?.id} menu={menu} />
-          ))
+        {cartItems.length > 0 && (
+          <button
+            onClick={handleClearCart}
+            className="text-sm text-red-500 hover:text-red-700 border border-red-300 hover:border-red-500 px-4 py-2 rounded-full transition-colors"
+          >
+            Clear Cart
+          </button>
         )}
       </div>
+
+      {/* Order success banner */}
+      {orderPlaced && (
+        <div className="mb-6 p-4 bg-green-100 text-green-800 rounded-xl text-center border border-green-200 flex items-center justify-center gap-2">
+          <span className="text-xl">🎉</span>
+          <span className="font-semibold">
+            Order placed successfully! Get ready for your meal.
+          </span>
+        </div>
+      )}
+
+      {/* Empty state */}
+      {cartItems.length === 0 && !orderPlaced && (
+        <div className="flex flex-col items-center justify-center py-24 text-center">
+          <span className="text-6xl mb-4">🛒</span>
+          <h3 className="text-2xl font-bold text-gray-700 mb-2">
+            Your cart is empty
+          </h3>
+          <p className="text-gray-400 mb-6">
+            Add some delicious food from our restaurants!
+          </p>
+          <a
+            href="/"
+            className="bg-orange-500 text-white px-6 py-3 rounded-full font-semibold hover:bg-orange-600 transition-colors"
+          >
+            Browse Restaurants
+          </a>
+        </div>
+      )}
+
+      {/* Cart items grid */}
       {cartItems.length > 0 && (
-        <div className=" p-4 bg-gray-100 rounded-lg shadow-lg">
-          <div className="flex justify-between items-center">
-            <h2 className="text-2xl font-bold">
-              Total Amount: ₹{totalAmount.toFixed(2)}
-            </h2>
+        <>
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-5 mb-8">
+            {cartItems.map((menu) => (
+              <FoodItem
+                key={menu?.card?.info?.id}
+                menu={menu}
+                onRemove={() => dispatch(removeItem(menu?.card?.info?.id))}
+                onRemoveAll={() =>
+                  dispatch(removeItemCompletely(menu?.card?.info?.id))
+                }
+              />
+            ))}
+          </div>
+
+          {/* Order summary */}
+          <div className="bg-white rounded-2xl shadow-md p-6 max-w-md ml-auto">
+            <h3 className="text-lg font-bold text-gray-800 mb-4">
+              Order Summary
+            </h3>
+            <div className="space-y-2 mb-4 text-sm text-gray-600">
+              <div className="flex justify-between">
+                <span>Items ({totalItems})</span>
+                <span>₹{totalAmount}</span>
+              </div>
+              <div className="flex justify-between">
+                <span>Delivery fee</span>
+                <span className="text-green-600 font-semibold">FREE</span>
+              </div>
+              <div className="border-t pt-2 flex justify-between font-bold text-gray-800 text-base">
+                <span>Total</span>
+                <span>₹{totalAmount}</span>
+              </div>
+            </div>
             <button
               onClick={handleOrder}
-              className="bg-green-500 text-white px-4 py-2 rounded-lg hover:bg-green-600 transition-colors"
+              disabled={isSubmitting}
+              className={`w-full py-3 rounded-xl font-bold text-white transition-all duration-200 ${
+                isSubmitting
+                  ? "bg-green-300 cursor-not-allowed"
+                  : "bg-green-500 hover:bg-green-600 active:scale-95"
+              }`}
             >
-              Submit Order
+              {isSubmitting ? "Placing order..." : "Place Order →"}
             </button>
           </div>
-        </div>
+        </>
       )}
     </div>
   );

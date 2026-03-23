@@ -1,4 +1,3 @@
-import React from "react";
 import { useParams } from "react-router-dom";
 import { IMG_CDN_URL, IMG_RESTAURANT_MENU_URL } from "../../utils/config";
 import ShimmerUI from "../Shimmer/ShimmerUI";
@@ -8,43 +7,86 @@ import { addItem } from "../../Store/cartSlice";
 import ScrollToTop from "../ScrollToTop/ScrollToTop";
 
 const RestaurantMenu = () => {
-  const params = useParams();
-  const { id } = params;
-
+  const { id } = useParams();
   const dispatch = useDispatch();
+
+  // Hook now returns 4 values — loading and error were previously discarded
+  const [restaurantMenu, restaurantDetails, loading, error] =
+    useRestaurantMenu(id);
 
   const addFoodItem = (item) => {
     dispatch(addItem(item));
   };
 
-  const [restaurantMenu, restaurantDetails] = useRestaurantMenu(id);
+  if (loading) return <ShimmerUI />;
 
-  return restaurantMenu.length === 0 ? (
-    <ShimmerUI />
-  ) : (
+  if (error) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen text-center px-4">
+        <span className="text-6xl mb-4">😕</span>
+        <h2 className="text-2xl font-bold text-gray-700 mb-2">
+          Could not load menu
+        </h2>
+        <p className="text-gray-400 mb-2">
+          The restaurant menu failed to load. This may be a temporary issue.
+        </p>
+        <p className="text-xs text-red-400 font-mono bg-red-50 px-3 py-1 rounded mb-6">
+          {error}
+        </p>
+        <button
+          onClick={() => window.history.back()}
+          className="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors"
+        >
+          ← Go Back
+        </button>
+      </div>
+    );
+  }
+
+  if (restaurantMenu.length === 0) {
+    return (
+      <div className="flex flex-col items-center justify-center min-h-screen text-center px-4">
+        <span className="text-6xl mb-4">🍽️</span>
+        <h2 className="text-2xl font-bold text-gray-700 mb-2">
+          Menu unavailable
+        </h2>
+        <p className="text-gray-400 mb-6">
+          No menu items found for this restaurant right now.
+        </p>
+        <button
+          onClick={() => window.history.back()}
+          className="bg-orange-500 text-white px-6 py-2 rounded-full hover:bg-orange-600 transition-colors"
+        >
+          ← Go Back
+        </button>
+      </div>
+    );
+  }
+
+  return (
     <div className="p-4 lg:pt-20 pt-16 md:p-8">
       <div className="bg-white rounded-lg shadow-md p-4 md:p-8 mb-8">
         <div className="flex flex-col md:flex-row items-center md:items-start">
           <img
-            src={IMG_CDN_URL + restaurantDetails.cloudinaryImageId}
+            src={IMG_CDN_URL + restaurantDetails?.cloudinaryImageId}
             alt="restaurant"
             className="w-full md:w-1/3 rounded-lg shadow-md mb-4 md:mb-0 md:mr-8 object-cover h-64"
           />
-          <div className="text-center md:text-left ">
+          <div className="text-center md:text-left">
             <h1 className="text-3xl font-bold mb-2">
-              {restaurantDetails.name}
+              {restaurantDetails?.name}
             </h1>
             <h2 className="text-lg text-gray-700 mb-2">
-              {restaurantDetails.locality}
+              {restaurantDetails?.locality}
             </h2>
             <h2 className="text-lg text-gray-700 mb-2">
-              {restaurantDetails.cuisines.join(", ")}
+              {restaurantDetails?.cuisines?.join(", ")}
             </h2>
             <h2 className="text-lg text-gray-700 mb-2">
-              {restaurantDetails.costForTwoMessage}
+              {restaurantDetails?.costForTwoMessage}
             </h2>
             <h3 className="text-lg text-yellow-500 font-semibold">
-              {restaurantDetails.avgRating} stars ⭐
+              {restaurantDetails?.avgRating} stars ⭐
             </h3>
           </div>
         </div>
